@@ -1,6 +1,5 @@
 {
   "cloud": {
-    "framework": "astro",
-    "basePath": "/boston"
+    "framework": "astro"
   }
 }
