@@ -1,3 +1,6 @@
+---
+export const prerender = true;
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+  <style is:inline>
     :root {
       --navy: #0C2340;
       --red: #BD3039;
@@ -572,7 +575,7 @@
     <p>4 Jersey Street, Boston, MA 02215</p>
   </footer>
 
-  <script>
+  <script is:inline>
     document.addEventListener('DOMContentLoaded', function () {
       // Toggle add-ons sections
       document.querySelectorAll('[data-target]').forEach(function (btn) {
