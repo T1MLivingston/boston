@@ -426,6 +426,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem;
+      align-items: stretch;
     }
 
     .card {
@@ -434,6 +435,8 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       overflow: hidden;
       transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
@@ -455,6 +458,9 @@
 
     .card-body {
       padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .price-badge {
@@ -478,24 +484,77 @@
 
     .features {
       list-style: none;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .features li {
-      padding: 0.4rem 0 0.4rem 1.5rem;
+      padding: 0.25rem 0 0.25rem 1.4rem;
       position: relative;
       border-left: 3px solid var(--red);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       margin-left: 0.25rem;
-      font-size: 0.95rem;
+      font-size: 0.84rem;
+      line-height: 1.4;
     }
 
     .features li::before {
       content: "\2713";
       position: absolute;
-      left: 0.35rem;
+      left: 0.3rem;
       color: var(--red);
       font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    /* Bar extension add-on checkbox */
+    .addon-check {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #f8f4eb, #fff);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      margin: 0.75rem 0;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .addon-check:hover {
+      box-shadow: 0 2px 10px rgba(200,169,81,0.25);
+    }
+
+    .addon-check input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .addon-check-text {
+      font-size: 0.84rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .addon-check-text strong {
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .addon-check-price {
+      margin-left: auto;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      color: var(--red);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* Card spacer to push bottom content down */
+    .card-spacer {
+      flex: 1;
     }
 
     /* Slider */
@@ -680,75 +739,20 @@
       font-size: 1.15rem;
     }
 
-    /* Toggle sections */
-    .toggle-btn {
-      display: inline-block;
-      background: none;
-      border: 2px solid var(--navy);
-      color: var(--navy);
+    /* Tour label */
+    .tour-label {
+      display: block;
       font-family: 'Oswald', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 0.45rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, color 0.2s;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .toggle-btn:hover {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    .toggle-btn.active {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    .addons-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .addons-content.visible {
-      max-height: 500px;
-    }
-
-    .addons-content .inner {
-      padding: 1rem 0;
-      border-top: 1px solid #eee;
-      margin-top: 0.75rem;
-    }
-
-    .addons-content ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .addons-content li {
-      padding: 0.3rem 0 0.3rem 1.2rem;
-      position: relative;
+      letter-spacing: 0.05em;
       color: var(--text-light);
-      font-size: 0.9rem;
-    }
-
-    .addons-content li::before {
-      content: "+";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
     }
 
     /* Virtual tour */
     .tour-container {
-      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     .tour-frame {
@@ -1093,6 +1097,16 @@
           <h3>Carl's Corner Pre-Game Reception</h3>
         </div>
         <div class="card-body">
+
+          <!-- Virtual Tour (above price) -->
+          <span class="tour-label">360&deg; Virtual Tour</span>
+          <div class="tour-container">
+            <div class="tour-frame" id="tour-carls" data-src="https://suiteview.com/tour/redsox-group/?s=pano49152">
+              <div class="iframe-wrapper"></div>
+              <span class="fallback">Can't see the tour? <a href="https://suiteview.com/tour/redsox-group/?s=pano49152" target="_blank" rel="noopener">Open in new tab &rarr;</a></span>
+            </div>
+          </div>
+
           <div class="price-badge" id="carls-price-badge">
             $4,275 for 15 Guests
             <span class="per-person">$285 per person</span>
@@ -1113,31 +1127,20 @@
           </div>
 
           <ul class="features">
-            <li>2-hour pre-game reception in Carl's Corner space</li>
-            <li>All-you-can-eat New England buffet for the full 2 hours</li>
-            <li>Hosted bar: beer, wine, soda, water, seltzers (2 hrs)</li>
-            <li>Dedicated server for your group</li>
-            <li>Seats together in Pavilion Reserved 18 or 20, right next to your reception space</li>
+            <li>2-hr pre-game reception in private space</li>
+            <li>New England buffet &amp; dedicated server</li>
+            <li>2-hr hosted bar (beer, wine, soda, seltzers)</li>
+            <li>Pavilion Reserved seats (Sec 18/20)</li>
           </ul>
 
-          <button class="toggle-btn" data-target="addons-carls">Add-ons &amp; Details</button>
-          <button class="toggle-btn" data-tour="tour-carls">Virtual Tour</button>
+          <!-- Bar Extension Add-on -->
+          <label class="addon-check" id="carls-bar-addon">
+            <input type="checkbox" id="carls-bar-check" />
+            <span class="addon-check-text"><strong>Add Bar Extension</strong><br>+2 hrs open bar</span>
+            <span class="addon-check-price" id="carls-bar-price">+$600</span>
+          </label>
 
-          <div class="addons-content" id="addons-carls">
-            <div class="inner">
-              <ul>
-                <li>Up to 25 total guests. Use the slider above to adjust</li>
-                <li>Bar can be extended for an additional 2 hours at $40/person</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tour-container">
-            <div class="tour-frame" id="tour-carls" data-src="https://suiteview.com/tour/redsox-group/?s=pano49152">
-              <div class="iframe-wrapper"></div>
-              <span class="fallback">Can't see the tour? <a href="https://suiteview.com/tour/redsox-group/?s=pano49152" target="_blank" rel="noopener">Open in new tab &rarr;</a></span>
-            </div>
-          </div>
+          <div class="card-spacer"></div>
         </div>
       </div>
 
@@ -1147,6 +1150,16 @@
           <h3>Hornitos Cantina In-Game Reception</h3>
         </div>
         <div class="card-body">
+
+          <!-- Virtual Tour (above price) -->
+          <span class="tour-label">360&deg; Virtual Tour</span>
+          <div class="tour-container">
+            <div class="tour-frame" id="tour-cantina" data-src="https://suiteview.com/tour/redsox-group/?s=pano49187">
+              <div class="iframe-wrapper"></div>
+              <span class="fallback">Can't see the tour? <a href="https://suiteview.com/tour/redsox-group/?s=pano49187" target="_blank" rel="noopener">Open in new tab &rarr;</a></span>
+            </div>
+          </div>
+
           <div class="price-badge" id="cantina-price-badge">
             From $4,680
             <span class="per-person">Starting at 24 guests &bull; ~$195/person</span>
@@ -1178,48 +1191,31 @@
                 <span>Per Person</span>
                 <strong id="cantina-pp">~$195</strong>
               </div>
-              <div class="cantina-calc-row">
-                <span>Bar Extension (+2 hrs)</span>
-                <strong id="cantina-bar">+$600</strong>
-              </div>
               <div class="cantina-calc-row total">
                 <span>Total (Base)</span>
                 <strong id="cantina-total">$4,680</strong>
               </div>
             </div>
             <p class="cantina-note" style="margin-top:0.75rem;">
-              Each zone has its own bar &amp; buffet service. If only one zone is booked, the other may host a separate group.
+              Each zone has its own bar &amp; buffet. If one zone is booked, the other may host a separate group.
             </p>
           </div>
 
           <ul class="features">
-            <li>Semi-private area with barstool &amp; tabletop seating</li>
-            <li>Full access to the Cantina throughout the entire game</li>
-            <li>TVs, drink rails, and tables for your group</li>
-            <li>2-hour Ballpark favorites buffet starting at first pitch</li>
-            <li>2-hour hosted bar: beer, wine, soda, water, seltzers</li>
+            <li>Semi-private barstool &amp; tabletop seating</li>
+            <li>Full Cantina access for the entire game</li>
+            <li>2-hr ballpark favorites buffet at first pitch</li>
+            <li>2-hr hosted bar (beer, wine, soda, seltzers)</li>
           </ul>
 
-          <button class="toggle-btn" data-target="addons-cantina">Add-ons &amp; Details</button>
-          <button class="toggle-btn" data-tour="tour-cantina">Virtual Tour</button>
+          <!-- Bar Extension Add-on -->
+          <label class="addon-check" id="cantina-bar-addon">
+            <input type="checkbox" id="cantina-bar-check" />
+            <span class="addon-check-text"><strong>Add Bar Extension</strong><br>+2 hrs open bar</span>
+            <span class="addon-check-price" id="cantina-bar-price">+$600</span>
+          </label>
 
-          <div class="addons-content" id="addons-cantina">
-            <div class="inner">
-              <ul>
-                <li>Bar extension: additional 2 hours for $25/person</li>
-                <li>Zone A (24 guests) or Zone B (42 guests) can be booked separately</li>
-                <li>Both zones combined: 66 guests for the full Cantina experience</li>
-                <li>Each zone's bar &amp; buffet are exclusive to your party</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tour-container">
-            <div class="tour-frame" id="tour-cantina" data-src="https://suiteview.com/tour/redsox-group/?s=pano49187">
-              <div class="iframe-wrapper"></div>
-              <span class="fallback">Can't see the tour? <a href="https://suiteview.com/tour/redsox-group/?s=pano49187" target="_blank" rel="noopener">Open in new tab &rarr;</a></span>
-            </div>
-          </div>
+          <div class="card-spacer"></div>
         </div>
       </div>
 
@@ -1275,8 +1271,8 @@
         </tr>
         <tr>
           <td><strong>Total (Base)</strong></td>
-          <td>$4,275</td>
-          <td>$4,680 / $8,190 / $12,870</td>
+          <td>$4,275 (15 guests)</td>
+          <td>$4,680 (24) / $8,190 (42) / $12,870 (66)</td>
         </tr>
       </tbody>
     </table>
@@ -1439,26 +1435,34 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      // Carl's Corner guest slider
+      // ── Carl's Corner guest slider + bar extension ──
       var slider = document.getElementById('carls-slider');
       var countEl = document.getElementById('carls-count');
       var totalEl = document.getElementById('carls-total');
       var badgeEl = document.getElementById('carls-price-badge');
+      var carlsBarCheck = document.getElementById('carls-bar-check');
+      var carlsBarPrice = document.getElementById('carls-bar-price');
       var pricePerPerson = 285;
+      var carlsBarRate = 40;
 
       function updateCarls() {
         var guests = parseInt(slider.value, 10);
-        var total = guests * pricePerPerson;
+        var base = guests * pricePerPerson;
+        var barCost = carlsBarCheck.checked ? guests * carlsBarRate : 0;
+        var total = base + barCost;
         countEl.textContent = guests;
-        totalEl.innerHTML = 'Total: <strong>$' + total.toLocaleString() + '</strong> for ' + guests + ' guests at $285/person';
-        badgeEl.innerHTML = '$' + total.toLocaleString() + ' for ' + guests + ' Guests<span class="per-person">$285 per person</span>';
+        carlsBarPrice.textContent = '+$' + (guests * carlsBarRate).toLocaleString();
+        totalEl.innerHTML = 'Total: <strong>$' + total.toLocaleString() + '</strong> for ' + guests + ' guests' + (barCost ? ' (incl. bar ext.)' : '');
+        badgeEl.innerHTML = '$' + total.toLocaleString() + ' for ' + guests + ' Guests<span class="per-person">$285/person' + (barCost ? ' + $40 bar ext.' : '') + '</span>';
       }
 
       if (slider) {
         slider.addEventListener('input', updateCarls);
+        carlsBarCheck.addEventListener('change', updateCarls);
       }
 
-      // Cantina zone picker / calculator
+      // ── Cantina zone picker + bar extension ──
+      var currentZone = 'a';
       var zoneData = {
         a:    { guests: 24, total: 4680,  barExt: 25 },
         b:    { guests: 42, total: 8190,  barExt: 25 },
@@ -1468,18 +1472,21 @@
       var cantinaBadge = document.getElementById('cantina-price-badge');
       var cantinaGuests = document.getElementById('cantina-guests');
       var cantinaPP = document.getElementById('cantina-pp');
-      var cantinaBar = document.getElementById('cantina-bar');
       var cantinaTotal = document.getElementById('cantina-total');
+      var cantinaBarCheck = document.getElementById('cantina-bar-check');
+      var cantinaBarPrice = document.getElementById('cantina-bar-price');
 
       function updateCantina(zone) {
+        currentZone = zone;
         var d = zoneData[zone];
         var pp = Math.round(d.total / d.guests);
-        var barCost = d.guests * d.barExt;
+        var barCost = cantinaBarCheck.checked ? d.guests * d.barExt : 0;
+        var total = d.total + barCost;
         cantinaGuests.textContent = d.guests;
-        cantinaPP.textContent = '~$' + pp;
-        cantinaBar.textContent = '+$' + barCost.toLocaleString();
-        cantinaTotal.textContent = '$' + d.total.toLocaleString();
-        cantinaBadge.innerHTML = '$' + d.total.toLocaleString() + ' for ' + d.guests + ' Guests<span class="per-person">~$' + pp + ' per person</span>';
+        cantinaPP.textContent = '~$' + (pp + (cantinaBarCheck.checked ? d.barExt : 0));
+        cantinaBarPrice.textContent = '+$' + (d.guests * d.barExt).toLocaleString();
+        cantinaTotal.textContent = '$' + total.toLocaleString();
+        cantinaBadge.innerHTML = '$' + total.toLocaleString() + ' for ' + d.guests + ' Guests<span class="per-person">~$' + pp + '/person' + (barCost ? ' + $25 bar ext.' : '') + '</span>';
 
         zoneBtns.forEach(function (b) {
           b.classList.toggle('active', b.getAttribute('data-zone') === zone);
@@ -1492,18 +1499,11 @@
         });
       });
 
-      // Toggle add-ons sections
-      document.querySelectorAll('[data-target]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var target = document.getElementById(btn.getAttribute('data-target'));
-          if (target) {
-            target.classList.toggle('visible');
-            btn.classList.toggle('active');
-          }
-        });
+      cantinaBarCheck.addEventListener('change', function () {
+        updateCantina(currentZone);
       });
 
-      // Auto-load and show virtual tour iframes
+      // ── Auto-load virtual tour iframes (always visible) ──
       document.querySelectorAll('.tour-frame').forEach(function (frame) {
         var src = frame.getAttribute('data-src');
         var wrapper = frame.querySelector('.iframe-wrapper');
@@ -1515,17 +1515,6 @@
           wrapper.appendChild(iframe);
         }
         frame.classList.add('visible');
-      });
-
-      // Still allow toggling tours via button
-      document.querySelectorAll('[data-tour]').forEach(function (btn) {
-        btn.classList.add('active');
-        btn.addEventListener('click', function () {
-          var frame = document.getElementById(btn.getAttribute('data-tour'));
-          if (!frame) return;
-          frame.classList.toggle('visible');
-          btn.classList.toggle('active');
-        });
       });
     });
   </script>
