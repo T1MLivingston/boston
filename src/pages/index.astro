@@ -1,9 +1,11 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boston Meetup at Fenway Park</title>
+  <title>Boston Web3 Meetup at Fenway Park</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -51,6 +53,13 @@
       position: relative;
     }
 
+    .hero-logo {
+      width: clamp(120px, 20vw, 200px);
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       text-transform: uppercase;
@@ -73,29 +82,47 @@
       margin-bottom: 2rem;
     }
 
-    .hero .cta {
+    .hero-cta-link {
       display: inline-block;
-      padding: 0.9rem 2.5rem;
-      background: var(--gold);
-      color: var(--navy);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-cta-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .hero-cta-img {
+      display: block;
+      width: clamp(220px, 30vw, 340px);
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .hero .scroll-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.7rem 2rem;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff;
       font-family: 'Oswald', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      text-decoration: none;
       border-radius: 4px;
-      border: none;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: background 0.2s, border-color 0.2s;
     }
 
-    .hero .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    .hero .scroll-btn:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #fff;
     }
 
-    /* Baseball stitch divider */
+    /* Stitch divider */
     .stitch-divider {
       width: 100%;
       overflow: hidden;
@@ -109,11 +136,103 @@
       height: 40px;
     }
 
+    /* Game Series */
+    .series {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    .series > h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .series > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .series-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .series-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .series-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .series-card-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .series-card-header img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .series-card-header h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .series-card-body {
+      padding: 1.5rem;
+    }
+
+    .series-dates {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .series-opponent {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .series-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      margin-top: 0.75rem;
+    }
+
     /* Packages */
     .packages {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 1.5rem;
+      padding: 3rem 1.5rem 4rem;
     }
 
     .packages > h2 {
@@ -205,6 +324,107 @@
       left: 0.35rem;
       color: var(--red);
       font-weight: 700;
+    }
+
+    /* Slider */
+    .slider-section {
+      margin: 1.25rem 0;
+      padding: 1rem;
+      background: #f7f7f7;
+      border-radius: 8px;
+    }
+
+    .slider-section label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .slider-row input[type="range"] {
+      flex: 1;
+      accent-color: var(--red);
+      height: 6px;
+      cursor: pointer;
+    }
+
+    .slider-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--red);
+      min-width: 2.5ch;
+      text-align: center;
+    }
+
+    .slider-total {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    .slider-total strong {
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    /* Cantina layout explainer */
+    .cantina-layout {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: #f7f7f7;
+      border-radius: 8px;
+    }
+
+    .cantina-layout h4 {
+      font-size: 1rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .cantina-zones {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cantina-zone {
+      flex: 1;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .cantina-zone strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .cantina-zone .zone-price {
+      color: var(--gold);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+    }
+
+    .cantina-note {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-style: italic;
     }
 
     /* Toggle sections */
@@ -364,6 +584,75 @@
       background: #f0f0f0;
     }
 
+    /* Event Planners */
+    .planners {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .planners h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .planners > p {
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .planners-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .planner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s;
+    }
+
+    .planner:hover {
+      transform: translateY(-4px);
+    }
+
+    .planner-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--navy);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: border-color 0.2s;
+    }
+
+    .planner:hover .planner-img {
+      border-color: var(--red);
+    }
+
+    .planner-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      color: var(--navy);
+    }
+
+    .planner-handle {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.15rem;
+    }
+
     /* Footer */
     footer {
       background: var(--navy);
@@ -396,12 +685,29 @@
         grid-template-columns: 1fr;
       }
 
+      .series-cards {
+        grid-template-columns: 1fr;
+      }
+
       .comparison table {
         font-size: 0.85rem;
       }
 
       .comparison th, .comparison td {
         padding: 0.5rem 0.6rem;
+      }
+
+      .cantina-zones {
+        flex-direction: column;
+      }
+
+      .planners-grid {
+        gap: 2rem;
+      }
+
+      .planner-img {
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
@@ -410,11 +716,15 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Boston Meetup<br>at Fenway Park</h1>
+    <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b78fe2b73770a04d4576e6_27f15ca4-9bfa-4224-8dea-c2884004a2ca.png" alt="Boston Web3 Logo" class="hero-logo" />
+    <h1>Boston Web3 Meetup<br>at Fenway Park</h1>
     <p class="subtitle">Join us for an unforgettable evening at America's Most Beloved Ballpark</p>
-    <p class="date">Summer 2026 &mdash; Date TBD</p>
-    <button class="cta" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">
-      Explore Packages &#9660;
+    <p class="date">Summer 2026 &mdash; Dates Below</p>
+    <a href="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" class="hero-cta-link" target="_blank" rel="noopener">
+      <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" alt="Sign up — Fill out the form" class="hero-cta-img" />
+    </a>
+    <button class="scroll-btn" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})">
+      See the Games &#9660;
     </button>
   </section>
 
@@ -425,6 +735,42 @@
       <path d="M0,20 Q150,5 300,18 Q450,32 600,18 Q750,5 900,18 Q1050,32 1200,18" fill="none" stroke="#BD3039" stroke-width="2.5" stroke-dasharray="8,6"/>
     </svg>
   </div>
+
+  <!-- Game Series -->
+  <section class="series" id="series">
+    <h2>The Games</h2>
+    <p>Two potential series we're targeting — vote for your favorite!</p>
+
+    <div class="series-cards">
+
+      <!-- Series 1: Yankees -->
+      <div class="series-card">
+        <div class="series-card-header">
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/nyy.png" alt="New York Yankees Logo" />
+          <h3>Red Sox vs. Yankees</h3>
+        </div>
+        <div class="series-card-body">
+          <div class="series-dates">June 25 &ndash; 28, 2026</div>
+          <div class="series-opponent">4-game series at Fenway Park &mdash; the ultimate rivalry</div>
+          <div class="series-badge">Option A</div>
+        </div>
+      </div>
+
+      <!-- Series 2: Blue Jays -->
+      <div class="series-card">
+        <div class="series-card-header">
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/tor.png" alt="Toronto Blue Jays Logo" />
+          <h3>Red Sox vs. Blue Jays</h3>
+        </div>
+        <div class="series-card-body">
+          <div class="series-dates">July 24 &ndash; 26, 2026</div>
+          <div class="series-opponent">3-game series at Fenway Park &mdash; AL East divisional battle</div>
+          <div class="series-badge">Option B</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Packages -->
   <section class="packages" id="packages">
@@ -439,10 +785,25 @@
           <h3>Carl's Corner Pre-Game Reception</h3>
         </div>
         <div class="card-body">
-          <div class="price-badge">
+          <div class="price-badge" id="carls-price-badge">
             $4,275 for 15 Guests
             <span class="per-person">$285 per person</span>
           </div>
+
+          <!-- Guest Slider -->
+          <div class="slider-section">
+            <label for="carls-slider">Choose Your Group Size</label>
+            <div class="slider-row">
+              <span style="font-size:0.85rem;color:var(--text-light)">15</span>
+              <input type="range" id="carls-slider" min="15" max="25" value="15" />
+              <span style="font-size:0.85rem;color:var(--text-light)">25</span>
+              <span class="slider-value" id="carls-count">15</span>
+            </div>
+            <div class="slider-total" id="carls-total">
+              Total: <strong>$4,275</strong> for 15 guests at $285/person
+            </div>
+          </div>
+
           <ul class="features">
             <li>2-hour pre-game reception in Carl's Corner space</li>
             <li>All-you-can-eat New England buffet for the full 2 hours</li>
@@ -457,7 +818,7 @@
           <div class="addons-content" id="addons-carls">
             <div class="inner">
               <ul>
-                <li>Up to 10 additional tickets at $285/person ($7,125 total for 25 guests max)</li>
+                <li>Up to 25 total guests — use the slider above to adjust</li>
                 <li>Bar can be extended for an additional 2 hours at $40/person</li>
               </ul>
             </div>
@@ -479,16 +840,42 @@
         </div>
         <div class="card-body">
           <div class="price-badge">
-            $12,870 for 66 Guests
-            <span class="per-person">~$195 per person</span>
+            From $4,680
+            <span class="per-person">Starting at 24 guests</span>
           </div>
+
           <ul class="features">
             <li>Semi-private area with barstool &amp; tabletop seating</li>
             <li>Full access to the Cantina throughout the entire game</li>
             <li>TVs, drink rails, and tables for your group</li>
             <li>2-hour Ballpark favorites buffet starting at first pitch</li>
-            <li>2-hour hosted bar &mdash; beer, wine, soda, water, seltzers (from first pitch)</li>
+            <li>2-hour hosted bar &mdash; beer, wine, soda, water, seltzers</li>
           </ul>
+
+          <!-- Cantina Layout Explainer -->
+          <div class="cantina-layout">
+            <h4>Flexible Booking — Two Separable Areas</h4>
+            <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:0.75rem;">
+              The Cantina is divided into <strong>two distinct zones</strong> that can be booked independently or combined for a larger group.
+            </p>
+            <div class="cantina-zones">
+              <div class="cantina-zone">
+                <strong>Zone A</strong>
+                24 guests<br>
+                <span class="zone-price">$4,680</span><br>
+                <span style="font-size:0.8rem;opacity:0.85">~$195/person</span>
+              </div>
+              <div class="cantina-zone">
+                <strong>Zone B</strong>
+                42 guests<br>
+                <span class="zone-price">$8,190</span><br>
+                <span style="font-size:0.8rem;opacity:0.85">~$195/person</span>
+              </div>
+            </div>
+            <p class="cantina-note">
+              Book both zones together for the full Cantina: 66 guests at $12,870. Each zone has its own bar &amp; buffet service. If only one zone is booked, the other may host a separate group.
+            </p>
+          </div>
 
           <button class="toggle-btn" data-target="addons-cantina">Add-ons &amp; Details</button>
           <button class="toggle-btn" data-tour="tour-cantina">Virtual Tour</button>
@@ -496,9 +883,10 @@
           <div class="addons-content" id="addons-cantina">
             <div class="inner">
               <ul>
-                <li>Bar extension: additional 2 hours for $25/person (at full 66 booking)</li>
-                <li>Smaller bookings available: 24 guests ($4,680) or 42 guests ($8,190)</li>
-                <li>Space may be shared with another group, but bar &amp; buffet are exclusive to your party</li>
+                <li>Bar extension: additional 2 hours for $25/person</li>
+                <li>Zone A (24 guests) or Zone B (42 guests) can be booked separately</li>
+                <li>Both zones combined: 66 guests for the full Cantina experience</li>
+                <li>Each zone's bar &amp; buffet are exclusive to your party</li>
               </ul>
             </div>
           </div>
@@ -529,8 +917,8 @@
       <tbody>
         <tr>
           <td><strong>Guests</strong></td>
-          <td>15 (up to 25)</td>
-          <td>66 (or 24 / 42)</td>
+          <td>15&ndash;25</td>
+          <td>24 / 42 / 66</td>
         </tr>
         <tr>
           <td><strong>Timing</strong></td>
@@ -558,12 +946,40 @@
           <td>+2 hrs @ $25/person</td>
         </tr>
         <tr>
+          <td><strong>Layout</strong></td>
+          <td>Single private space</td>
+          <td>2 zones (bookable separately)</td>
+        </tr>
+        <tr>
           <td><strong>Total (Base)</strong></td>
           <td>$4,275</td>
-          <td>$12,870</td>
+          <td>$4,680 / $8,190 / $12,870</td>
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- Event Planners -->
+  <section class="planners">
+    <h2>Your Event Planners</h2>
+    <p>Reach out to us on X with any questions</p>
+    <div class="planners-grid">
+      <a href="https://x.com/T1MLivingston" target="_blank" rel="noopener" class="planner">
+        <img src="https://pbs.twimg.com/profile_images/2032683131690446848/VvyrQMyP_400x400.jpg" alt="Tim Livingston" class="planner-img" />
+        <span class="planner-name">Tim Livingston</span>
+        <span class="planner-handle">@T1MLivingston</span>
+      </a>
+      <a href="https://x.com/Teacher96_Katie" target="_blank" rel="noopener" class="planner">
+        <img src="https://pbs.twimg.com/profile_images/2027809249284292608/8rHs7OcH_400x400.jpg" alt="Katie" class="planner-img" />
+        <span class="planner-name">Katie</span>
+        <span class="planner-handle">@Teacher96_Katie</span>
+      </a>
+      <a href="https://x.com/montanakind" target="_blank" rel="noopener" class="planner">
+        <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/694e9a4fbdd7184b657c0f77_n_17763%20Small.jpeg" alt="Luke" class="planner-img" />
+        <span class="planner-name">Luke</span>
+        <span class="planner-handle">@montanakind</span>
+      </a>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -574,6 +990,25 @@
 
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function () {
+      // Carl's Corner guest slider
+      var slider = document.getElementById('carls-slider');
+      var countEl = document.getElementById('carls-count');
+      var totalEl = document.getElementById('carls-total');
+      var badgeEl = document.getElementById('carls-price-badge');
+      var pricePerPerson = 285;
+
+      function updateCarls() {
+        var guests = parseInt(slider.value, 10);
+        var total = guests * pricePerPerson;
+        countEl.textContent = guests;
+        totalEl.innerHTML = 'Total: <strong>$' + total.toLocaleString() + '</strong> for ' + guests + ' guests at $285/person';
+        badgeEl.innerHTML = '$' + total.toLocaleString() + ' for ' + guests + ' Guests<span class="per-person">$285 per person</span>';
+      }
+
+      if (slider) {
+        slider.addEventListener('input', updateCarls);
+      }
+
       // Toggle add-ons sections
       document.querySelectorAll('[data-target]').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -591,7 +1026,6 @@
           var frame = document.getElementById(btn.getAttribute('data-tour'));
           if (!frame) return;
 
-          // Lazy-load iframe on first open
           if (!frame.querySelector('iframe')) {
             var src = frame.getAttribute('data-src');
             var wrapper = frame.querySelector('.iframe-wrapper');
