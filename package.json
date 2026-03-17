@@ -1,15 +1,21 @@
 {
   "name": "boston",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro build && wrangler dev",
+    "deploy": "webflow cloud deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
     "astro": "^5.7.10"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250415.0",
+    "wrangler": "^4.11.1"
   }
 }
