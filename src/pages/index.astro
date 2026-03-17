@@ -624,6 +624,87 @@
       font-style: italic;
     }
 
+    /* Zone Picker */
+    .zone-picker {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .zone-btn {
+      flex: 1;
+      background: #fff;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 0.75rem 0.5rem;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .zone-btn:hover {
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .zone-btn.active {
+      border-color: var(--red);
+      background: rgba(189,48,57,0.08);
+    }
+
+    .zone-btn-label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .zone-btn-detail {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    .cantina-calc {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #eee;
+    }
+
+    .cantina-calc-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .cantina-calc-row strong {
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+    }
+
+    .cantina-calc-row.total {
+      border-top: 2px solid var(--navy);
+      margin-top: 0.35rem;
+      padding-top: 0.5rem;
+    }
+
+    .cantina-calc-row.total span {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .cantina-calc-row.total strong {
+      color: var(--red);
+      font-size: 1.15rem;
+    }
+
     /* Toggle sections */
     .toggle-btn {
       display: inline-block;
@@ -911,6 +992,10 @@
         flex-direction: column;
       }
 
+      .zone-picker {
+        flex-direction: column;
+      }
+
       .planners-grid {
         gap: 2rem;
       }
@@ -1085,9 +1170,49 @@
           <h3>Hornitos Cantina In-Game Reception</h3>
         </div>
         <div class="card-body">
-          <div class="price-badge">
+          <div class="price-badge" id="cantina-price-badge">
             From $4,680
-            <span class="per-person">Starting at 24 guests</span>
+            <span class="per-person">Starting at 24 guests &bull; ~$195/person</span>
+          </div>
+
+          <!-- Zone Picker / Calculator -->
+          <div class="slider-section">
+            <label>Choose Your Zone Configuration</label>
+            <div class="zone-picker">
+              <button type="button" class="zone-btn active" data-zone="a" id="zone-btn-a">
+                <span class="zone-btn-label">Zone A</span>
+                <span class="zone-btn-detail">24 guests &bull; $4,680</span>
+              </button>
+              <button type="button" class="zone-btn" data-zone="b" id="zone-btn-b">
+                <span class="zone-btn-label">Zone B</span>
+                <span class="zone-btn-detail">42 guests &bull; $8,190</span>
+              </button>
+              <button type="button" class="zone-btn" data-zone="both" id="zone-btn-both">
+                <span class="zone-btn-label">Both Zones</span>
+                <span class="zone-btn-detail">66 guests &bull; $12,870</span>
+              </button>
+            </div>
+            <div class="cantina-calc" id="cantina-calc">
+              <div class="cantina-calc-row">
+                <span>Guests</span>
+                <strong id="cantina-guests">24</strong>
+              </div>
+              <div class="cantina-calc-row">
+                <span>Per Person</span>
+                <strong id="cantina-pp">~$195</strong>
+              </div>
+              <div class="cantina-calc-row">
+                <span>Bar Extension (+2 hrs)</span>
+                <strong id="cantina-bar">+$600</strong>
+              </div>
+              <div class="cantina-calc-row total">
+                <span>Total (Base)</span>
+                <strong id="cantina-total">$4,680</strong>
+              </div>
+            </div>
+            <p class="cantina-note" style="margin-top:0.75rem;">
+              Each zone has its own bar &amp; buffet service. If only one zone is booked, the other may host a separate group.
+            </p>
           </div>
 
           <ul class="features">
@@ -1097,31 +1222,6 @@
             <li>2-hour Ballpark favorites buffet starting at first pitch</li>
             <li>2-hour hosted bar &mdash; beer, wine, soda, water, seltzers</li>
           </ul>
-
-          <!-- Cantina Layout Explainer -->
-          <div class="cantina-layout">
-            <h4>Flexible Booking — Two Separable Areas</h4>
-            <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:0.75rem;">
-              The Cantina is divided into <strong>two distinct zones</strong> that can be booked independently or combined for a larger group.
-            </p>
-            <div class="cantina-zones">
-              <div class="cantina-zone">
-                <strong>Zone A</strong>
-                24 guests<br>
-                <span class="zone-price">$4,680</span><br>
-                <span style="font-size:0.8rem;opacity:0.85">~$195/person</span>
-              </div>
-              <div class="cantina-zone">
-                <strong>Zone B</strong>
-                42 guests<br>
-                <span class="zone-price">$8,190</span><br>
-                <span style="font-size:0.8rem;opacity:0.85">~$195/person</span>
-              </div>
-            </div>
-            <p class="cantina-note">
-              Book both zones together for the full Cantina: 66 guests at $12,870. Each zone has its own bar &amp; buffet service. If only one zone is booked, the other may host a separate group.
-            </p>
-          </div>
 
           <button class="toggle-btn" data-target="addons-cantina">Add-ons &amp; Details</button>
           <button class="toggle-btn" data-tour="tour-cantina">Virtual Tour</button>
@@ -1333,6 +1433,40 @@
         slider.addEventListener('input', updateCarls);
       }
 
+      // Cantina zone picker / calculator
+      var zoneData = {
+        a:    { guests: 24, total: 4680,  barExt: 25 },
+        b:    { guests: 42, total: 8190,  barExt: 25 },
+        both: { guests: 66, total: 12870, barExt: 25 }
+      };
+      var zoneBtns = document.querySelectorAll('.zone-btn');
+      var cantinaBadge = document.getElementById('cantina-price-badge');
+      var cantinaGuests = document.getElementById('cantina-guests');
+      var cantinaPP = document.getElementById('cantina-pp');
+      var cantinaBar = document.getElementById('cantina-bar');
+      var cantinaTotal = document.getElementById('cantina-total');
+
+      function updateCantina(zone) {
+        var d = zoneData[zone];
+        var pp = Math.round(d.total / d.guests);
+        var barCost = d.guests * d.barExt;
+        cantinaGuests.textContent = d.guests;
+        cantinaPP.textContent = '~$' + pp;
+        cantinaBar.textContent = '+$' + barCost.toLocaleString();
+        cantinaTotal.textContent = '$' + d.total.toLocaleString();
+        cantinaBadge.innerHTML = '$' + d.total.toLocaleString() + ' for ' + d.guests + ' Guests<span class="per-person">~$' + pp + ' per person</span>';
+
+        zoneBtns.forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-zone') === zone);
+        });
+      }
+
+      zoneBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          updateCantina(btn.getAttribute('data-zone'));
+        });
+      });
+
       // Toggle add-ons sections
       document.querySelectorAll('[data-target]').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -1344,24 +1478,26 @@
         });
       });
 
-      // Toggle virtual tour iframes (lazy-load on first click)
+      // Auto-load and show virtual tour iframes
+      document.querySelectorAll('.tour-frame').forEach(function (frame) {
+        var src = frame.getAttribute('data-src');
+        var wrapper = frame.querySelector('.iframe-wrapper');
+        if (src && wrapper) {
+          var iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.setAttribute('loading', 'lazy');
+          wrapper.appendChild(iframe);
+        }
+        frame.classList.add('visible');
+      });
+
+      // Still allow toggling tours via button
       document.querySelectorAll('[data-tour]').forEach(function (btn) {
+        btn.classList.add('active');
         btn.addEventListener('click', function () {
           var frame = document.getElementById(btn.getAttribute('data-tour'));
           if (!frame) return;
-
-          if (!frame.querySelector('iframe')) {
-            var src = frame.getAttribute('data-src');
-            var wrapper = frame.querySelector('.iframe-wrapper');
-            if (src && wrapper) {
-              var iframe = document.createElement('iframe');
-              iframe.src = src;
-              iframe.setAttribute('allowfullscreen', '');
-              iframe.setAttribute('loading', 'lazy');
-              wrapper.appendChild(iframe);
-            }
-          }
-
           frame.classList.toggle('visible');
           btn.classList.toggle('active');
         });
