@@ -123,13 +123,6 @@
       object-fit: contain;
     }
 
-    .hero-series-chip img.logo-on-dark {
-      background: #fff;
-      border-radius: 50%;
-      padding: 2px;
-      width: 32px;
-      height: 32px;
-    }
 
     .hero-series-chip .chip-dates {
       font-family: 'Oswald', sans-serif;
@@ -347,14 +340,6 @@
       object-fit: contain;
     }
 
-    .schedule-block-header img.logo-on-dark {
-      background: #fff;
-      border-radius: 50%;
-      padding: 4px;
-      width: 40px;
-      height: 40px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-    }
 
     .schedule-block-header h3 {
       font-size: 1.05rem;
@@ -1070,7 +1055,7 @@
         <p class="date">September 2026 / Fenway Park, Boston</p>
         <div class="hero-series-inline">
           <div class="hero-series-chip">
-            <img src="https://a.espncdn.com/i/teamlogos/mlb/500/kc.png" alt="Royals" class="logo-on-dark" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Kansas_City_Royals_Primary_Logo.svg" alt="Royals" />
             <div>
               <strong>Red Sox vs. Royals</strong>
               <span class="chip-dates">Sep 11-13</span>
@@ -1102,7 +1087,7 @@
     <div class="schedule-grid">
       <div class="schedule-block">
         <div class="schedule-block-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/kc.png" alt="Royals" class="logo-on-dark" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Kansas_City_Royals_Primary_Logo.svg" alt="Royals" />
           <h3>Red Sox vs. Royals</h3>
           <span class="schedule-badge">Option A</span>
         </div>
@@ -1446,7 +1431,7 @@
   <footer>
     <strong>Fenway Park &bull; Boston, MA</strong>
     <p>4 Jersey Street, Boston, MA 02215</p>
-    <p style="margin-top:0.75rem;font-size:0.8rem;"><a href="/terms">Terms of Service</a></p>
+    <p style="margin-top:0.75rem;font-size:0.8rem;"><a href={`${import.meta.env.BASE_URL}terms`}>Terms of Service</a></p>
   </footer>
 
   <script is:inline>
