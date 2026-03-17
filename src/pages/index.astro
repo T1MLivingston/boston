@@ -144,9 +144,7 @@
     }
 
     .interest-cta h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
       color: #fff;
-      text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
 
@@ -304,11 +302,26 @@
       padding: 3rem 1.5rem 1rem;
     }
 
-    .game-schedule-section > h2 {
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       text-align: center;
       font-size: clamp(1.8rem, 4vw, 2.5rem);
       color: var(--navy);
       text-transform: uppercase;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      flex: 0 0 60px;
+      height: 0;
+      border-top: 3px dashed var(--red);
+    }
+
+    .game-schedule-section > h2 {
       margin-bottom: 2rem;
     }
 
@@ -334,12 +347,18 @@
       gap: 0.75rem;
     }
 
-    .schedule-block-header img {
-      width: 36px;
-      height: 36px;
+    .schedule-block-header .team-logo-left,
+    .schedule-block-header .team-logo-right {
+      width: 40px;
+      height: 40px;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
+    .schedule-header-center {
+      flex: 1;
+      text-align: center;
+    }
 
     .schedule-block-header h3 {
       font-size: 1.05rem;
@@ -347,7 +366,7 @@
     }
 
     .schedule-block-header .schedule-badge {
-      margin-left: auto;
+      display: inline-block;
       background: var(--gold);
       color: var(--navy);
       font-family: 'Oswald', sans-serif;
@@ -356,6 +375,7 @@
       padding: 0.2rem 0.6rem;
       border-radius: 3px;
       text-transform: uppercase;
+      margin-top: 0.2rem;
     }
 
     .game-schedule {
@@ -404,10 +424,6 @@
     }
 
     .packages > h2 {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--navy);
-      text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
 
@@ -824,10 +840,6 @@
     }
 
     .comparison h2 {
-      text-align: center;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--navy);
-      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
 
@@ -898,9 +910,6 @@
     }
 
     .planners h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--navy);
-      text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
 
@@ -1083,13 +1092,16 @@
 
   <!-- Game Schedule -->
   <section class="game-schedule-section">
-    <h2>The Games</h2>
+    <h2 class="section-title">The Games</h2>
     <div class="schedule-grid">
       <div class="schedule-block">
         <div class="schedule-block-header">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Kansas_City_Royals_Primary_Logo.svg" alt="Royals" />
-          <h3>Red Sox vs. Royals</h3>
-          <span class="schedule-badge">Option A</span>
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/bos.png" alt="Red Sox" class="team-logo-left" />
+          <div class="schedule-header-center">
+            <h3>Red Sox vs. Royals</h3>
+            <span class="schedule-badge">Option A</span>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Kansas_City_Royals_Primary_Logo.svg" alt="Royals" class="team-logo-right" />
         </div>
         <div class="game-schedule">
           <div class="game-row">
@@ -1109,9 +1121,12 @@
       </div>
       <div class="schedule-block">
         <div class="schedule-block-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/chc.png" alt="Cubs" />
-          <h3>Red Sox vs. Cubs</h3>
-          <span class="schedule-badge">Option B</span>
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/bos.png" alt="Red Sox" class="team-logo-left" />
+          <div class="schedule-header-center">
+            <h3>Red Sox vs. Cubs</h3>
+            <span class="schedule-badge">Option B</span>
+          </div>
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/chc.png" alt="Cubs" class="team-logo-right" />
         </div>
         <div class="game-schedule">
           <div class="game-row">
@@ -1134,7 +1149,7 @@
 
   <!-- Packages -->
   <section class="packages" id="packages">
-    <h2>Reception Packages</h2>
+    <h2 class="section-title">Reception Packages</h2>
     <p>Two incredible options for your Fenway Park experience</p>
 
     <div class="cards">
@@ -1272,7 +1287,7 @@
 
   <!-- Comparison Table -->
   <section class="comparison">
-    <h2>Quick Comparison</h2>
+    <h2 class="section-title">Quick Comparison</h2>
     <table>
       <thead>
         <tr>
@@ -1329,7 +1344,7 @@
   <!-- Interest CTA with Fenway Image & Form -->
   <section class="interest-cta" id="interest">
     <div class="interest-cta-inner">
-      <h2>Interested? Let Us Know</h2>
+      <h2 class="section-title">Interested? Let Us Know</h2>
       <p>Drop your info below and we'll keep you in the loop.</p>
 
       <a href="#interest-form" class="fenway-cta-wrapper" onclick="event.preventDefault(); document.getElementById('interest-form').scrollIntoView({behavior:'smooth'})">
@@ -1406,7 +1421,7 @@
 
   <!-- Event Planners -->
   <section class="planners">
-    <h2>Your Event Planners</h2>
+    <h2 class="section-title">Your Event Planners</h2>
     <p>Reach out to us on X with any questions</p>
     <div class="planners-grid">
       <a href="https://x.com/T1MLivingston" target="_blank" rel="noopener" class="planner">
