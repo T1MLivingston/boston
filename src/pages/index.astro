@@ -995,6 +995,120 @@
       text-decoration: underline;
     }
 
+    /* Sponsors */
+    .sponsors {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .sponsors > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .sponsor-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .sponsor-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .sponsor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .sponsor-card-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 1rem 1rem 0.75rem;
+    }
+
+    .sponsor-card-header h3 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .sponsor-card-header .sponsor-tier-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      opacity: 0.8;
+      letter-spacing: 0.06em;
+      margin-top: 0.15rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .sponsor-card-body {
+      padding: 1.25rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sponsor-ticket-count {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .sponsor-ticket-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .sponsor-description {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      padding: 0 0.5rem;
+    }
+
+    .sponsor-card-body .card-spacer {
+      flex: 1;
+    }
+
+    .sponsor-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      margin-top: auto;
+    }
+
+    .sponsor-btn:hover {
+      background: #b89940;
+      transform: translateY(-2px);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero-inner {
@@ -1049,6 +1163,16 @@
       }
 
       .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .sponsor-tiers {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sponsor-tiers {
         grid-template-columns: 1fr;
       }
     }
@@ -1342,6 +1466,72 @@
     </table>
   </section>
 
+  <!-- Community Sponsors -->
+  <section class="sponsors" id="sponsors">
+    <h2 class="section-title">Community Sponsors</h2>
+    <p>Support the Boston Web3 community by sponsoring tickets for the event. Choose a package below and we'll get you set up.</p>
+
+    <div class="sponsor-tiers">
+
+      <!-- Tier 1: Supporter -->
+      <div class="sponsor-card">
+        <div class="sponsor-card-header">
+          <h3>Supporter <span class="sponsor-tier-label">Community Tier</span></h3>
+        </div>
+        <div class="sponsor-card-body">
+          <div class="sponsor-ticket-count">5</div>
+          <div class="sponsor-ticket-label">Tickets</div>
+          <p class="sponsor-description">Sponsor 5 community members and get your name on the event page.</p>
+          <div class="card-spacer"></div>
+          <button type="button" class="sponsor-btn" data-sponsor-tier="supporter-5">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Tier 2: Advocate -->
+      <div class="sponsor-card">
+        <div class="sponsor-card-header">
+          <h3>Advocate <span class="sponsor-tier-label">Growth Tier</span></h3>
+        </div>
+        <div class="sponsor-card-body">
+          <div class="sponsor-ticket-count">10</div>
+          <div class="sponsor-ticket-label">Tickets</div>
+          <p class="sponsor-description">Sponsor 10 community members with logo placement at the event.</p>
+          <div class="card-spacer"></div>
+          <button type="button" class="sponsor-btn" data-sponsor-tier="advocate-10">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Tier 3: Champion -->
+      <div class="sponsor-card">
+        <div class="sponsor-card-header">
+          <h3>Champion <span class="sponsor-tier-label">Impact Tier</span></h3>
+        </div>
+        <div class="sponsor-card-body">
+          <div class="sponsor-ticket-count">20</div>
+          <div class="sponsor-ticket-label">Tickets</div>
+          <p class="sponsor-description">Sponsor 20 community members with featured branding and a shout-out.</p>
+          <div class="card-spacer"></div>
+          <button type="button" class="sponsor-btn" data-sponsor-tier="champion-20">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Tier 4: Title Sponsor -->
+      <div class="sponsor-card">
+        <div class="sponsor-card-header" style="background: linear-gradient(135deg, var(--navy), var(--red));">
+          <h3>Title Sponsor <span class="sponsor-tier-label">Full Event</span></h3>
+        </div>
+        <div class="sponsor-card-body">
+          <div class="sponsor-ticket-count" style="font-size: 1.5rem;">Full Event</div>
+          <div class="sponsor-ticket-label">All Tickets Covered</div>
+          <p class="sponsor-description">Become the presenting sponsor. Premium branding, speaking slot, and full event naming rights.</p>
+          <div class="card-spacer"></div>
+          <button type="button" class="sponsor-btn" data-sponsor-tier="title-sponsor">Get Started</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Interest CTA with Fenway Image & Form -->
   <section class="interest-cta" id="interest">
     <div class="interest-cta-inner">
@@ -1403,6 +1593,8 @@
               <option value="unsure">Not sure yet, tell me more</option>
             </select>
           </div>
+          <!-- Sponsor tier tag — set via JS when user clicks a sponsor card -->
+          <input type="hidden" id="form-sponsor-tier" name="sponsor_tier" value="" />
           <!-- Honeypot — hidden from real users, catches bots -->
           <div style="position:absolute;left:-9999px;" aria-hidden="true">
             <label for="form-website">Website</label>
@@ -1565,6 +1757,21 @@
 
       cantinaBarCheck.addEventListener('change', function () {
         updateCantina(currentZone);
+      });
+
+      // ── Sponsor tier buttons ──
+      var sponsorTierInput = document.getElementById('form-sponsor-tier');
+      document.querySelectorAll('.sponsor-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var tier = btn.getAttribute('data-sponsor-tier');
+          if (sponsorTierInput) {
+            sponsorTierInput.value = tier;
+          }
+          var formEl = document.getElementById('interest-form');
+          if (formEl) {
+            formEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
       });
 
       // ── Auto-load virtual tour iframes (always visible) ──
