@@ -47,7 +47,9 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 40%, var(--red) 100%);
+      background:
+        linear-gradient(135deg, rgba(12,35,64,0.82) 0%, rgba(26,58,92,0.75) 40%, rgba(189,48,57,0.7) 100%),
+        url('https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b8d937e2a5ef57890eeff3_Pavilion%20Hospitality%20Seat%20View.jpg') center/cover no-repeat;
       color: #fff;
       padding: 2rem;
       position: relative;
@@ -226,6 +228,45 @@
       border-radius: 3px;
       text-transform: uppercase;
       margin-top: 0.75rem;
+    }
+
+    .game-schedule {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .game-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+    }
+
+    .game-row:last-child {
+      border-bottom: none;
+    }
+
+    .game-day {
+      font-weight: 600;
+      color: var(--navy);
+      min-width: 90px;
+    }
+
+    .game-time {
+      font-family: 'Oswald', sans-serif;
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .game-promo {
+      font-size: 0.75rem;
+      color: var(--gold);
+      background: var(--navy);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-weight: 600;
     }
 
     /* Packages */
@@ -719,7 +760,7 @@
     <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b78fe2b73770a04d4576e6_27f15ca4-9bfa-4224-8dea-c2884004a2ca.png" alt="Boston Web3 Logo" class="hero-logo" />
     <h1>Boston Web3 Meetup<br>at Fenway Park</h1>
     <p class="subtitle">Join us for an unforgettable evening at America's Most Beloved Ballpark</p>
-    <p class="date">Summer 2026 &mdash; Dates Below</p>
+    <p class="date">September 2026 &mdash; Fenway Park</p>
     <a href="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" class="hero-cta-link" target="_blank" rel="noopener">
       <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" alt="Sign up — Fill out the form" class="hero-cta-img" />
     </a>
@@ -743,28 +784,58 @@
 
     <div class="series-cards">
 
-      <!-- Series 1: Yankees -->
+      <!-- Series 1: Royals -->
       <div class="series-card">
         <div class="series-card-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/nyy.png" alt="New York Yankees Logo" />
-          <h3>Red Sox vs. Yankees</h3>
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/kc.png" alt="Kansas City Royals Logo" />
+          <h3>Red Sox vs. Royals</h3>
         </div>
         <div class="series-card-body">
-          <div class="series-dates">June 25 &ndash; 28, 2026</div>
-          <div class="series-opponent">4-game series at Fenway Park &mdash; the ultimate rivalry</div>
+          <div class="series-dates">September 11 &ndash; 13, 2026</div>
+          <div class="series-opponent">3-game series at Fenway Park</div>
+          <div class="game-schedule">
+            <div class="game-row">
+              <span class="game-day">Fri, Sep 11</span>
+              <span class="game-time">7:10 PM ET</span>
+            </div>
+            <div class="game-row">
+              <span class="game-day">Sat, Sep 12</span>
+              <span class="game-time">4:10 PM ET</span>
+              <span class="game-promo">Bruins Day</span>
+            </div>
+            <div class="game-row">
+              <span class="game-day">Sun, Sep 13</span>
+              <span class="game-time">1:35 PM ET</span>
+            </div>
+          </div>
           <div class="series-badge">Option A</div>
         </div>
       </div>
 
-      <!-- Series 2: Blue Jays -->
+      <!-- Series 2: Cubs -->
       <div class="series-card">
         <div class="series-card-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/tor.png" alt="Toronto Blue Jays Logo" />
-          <h3>Red Sox vs. Blue Jays</h3>
+          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/chc.png" alt="Chicago Cubs Logo" />
+          <h3>Red Sox vs. Cubs</h3>
         </div>
         <div class="series-card-body">
-          <div class="series-dates">July 24 &ndash; 26, 2026</div>
-          <div class="series-opponent">3-game series at Fenway Park &mdash; AL East divisional battle</div>
+          <div class="series-dates">September 25 &ndash; 27, 2026</div>
+          <div class="series-opponent">3-game series at Fenway Park</div>
+          <div class="game-schedule">
+            <div class="game-row">
+              <span class="game-day">Fri, Sep 25</span>
+              <span class="game-time">7:10 PM ET</span>
+              <span class="game-promo">Pok&eacute;mon GO Night</span>
+            </div>
+            <div class="game-row">
+              <span class="game-day">Sat, Sep 26</span>
+              <span class="game-time">7:15 PM ET</span>
+            </div>
+            <div class="game-row">
+              <span class="game-day">Sun, Sep 27</span>
+              <span class="game-time">3:05 PM ET</span>
+            </div>
+          </div>
           <div class="series-badge">Option B</div>
         </div>
       </div>
