@@ -43,27 +43,38 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
       background:
-        linear-gradient(135deg, rgba(12,35,64,0.82) 0%, rgba(26,58,92,0.75) 40%, rgba(189,48,57,0.7) 100%),
+        linear-gradient(135deg, rgba(12,35,64,0.88) 0%, rgba(26,58,92,0.82) 40%, rgba(189,48,57,0.75) 100%),
         url('https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b8d937e2a5ef57890eeff3_Pavilion%20Hospitality%20Seat%20View.jpg') center/cover no-repeat;
       color: #fff;
       padding: 2rem;
       position: relative;
     }
 
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
     .hero-logo {
-      width: clamp(120px, 20vw, 200px);
+      width: clamp(200px, 28vw, 360px);
       height: auto;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4));
+    }
+
+    .hero-text {
+      text-align: left;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 5vw, 4rem);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
@@ -71,41 +82,28 @@
     }
 
     .hero .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
       opacity: 0.9;
       margin-bottom: 0.5rem;
       font-weight: 600;
+    }
+
+    .hero .experience-note {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      opacity: 0.85;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
     }
 
     .hero .date {
       font-family: 'Oswald', sans-serif;
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       color: var(--gold);
-      margin-bottom: 2rem;
-    }
-
-    .hero-cta-link {
-      display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .hero-cta-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
-
-    .hero-cta-img {
-      display: block;
-      width: clamp(220px, 30vw, 340px);
-      height: auto;
-      border-radius: 8px;
+      margin-bottom: 1.5rem;
     }
 
     .hero .scroll-btn {
       display: inline-block;
-      margin-top: 1.5rem;
       padding: 0.7rem 2rem;
       background: transparent;
       border: 2px solid rgba(255,255,255,0.5);
@@ -122,6 +120,164 @@
     .hero .scroll-btn:hover {
       background: rgba(255,255,255,0.15);
       border-color: #fff;
+    }
+
+    /* Interest CTA Section */
+    .interest-cta {
+      background: var(--navy);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .interest-cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .interest-cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .interest-cta > .interest-cta-inner > p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .fenway-cta-wrapper {
+      display: inline-block;
+      border: 4px solid var(--gold);
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 0 30px rgba(200,169,81,0.3);
+      margin-bottom: 2rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .fenway-cta-wrapper:hover {
+      box-shadow: 0 0 45px rgba(200,169,81,0.5);
+      transform: translateY(-3px);
+    }
+
+    .fenway-cta-img {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 8px;
+    }
+
+    .fenway-cta-label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+      padding-bottom: 0.25rem;
+    }
+
+    /* Interest Form */
+    .interest-form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .interest-form h3 {
+      font-size: 1.4rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-group select {
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover {
+      background: #d4b85c;
+      transform: translateY(-2px);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: var(--gold);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
     }
 
     /* Stitch divider */
@@ -722,6 +878,19 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-logo {
+        width: clamp(180px, 50vw, 280px);
+      }
+
       .cards {
         grid-template-columns: 1fr;
       }
@@ -750,6 +919,10 @@
         width: 100px;
         height: 100px;
       }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -757,16 +930,18 @@
 
   <!-- Hero -->
   <section class="hero">
-    <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b78fe2b73770a04d4576e6_27f15ca4-9bfa-4224-8dea-c2884004a2ca.png" alt="Boston Web3 Logo" class="hero-logo" />
-    <h1>Boston Web3 Meetup<br>at Fenway Park</h1>
-    <p class="subtitle">Join us for an unforgettable evening at America's Most Beloved Ballpark</p>
-    <p class="date">September 2026 &mdash; Fenway Park</p>
-    <a href="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" class="hero-cta-link" target="_blank" rel="noopener">
-      <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b883c24f1a4fb5ed732a26_web3_boston.png" alt="Sign up — Fill out the form" class="hero-cta-img" />
-    </a>
-    <button class="scroll-btn" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})">
-      See the Games &#9660;
-    </button>
+    <div class="hero-inner">
+      <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b78fe2b73770a04d4576e6_27f15ca4-9bfa-4224-8dea-c2884004a2ca.png" alt="Boston Web3 Logo" class="hero-logo" />
+      <div class="hero-text">
+        <h1>Boston Web3 Meetup<br>at Fenway Park</h1>
+        <p class="subtitle">More than a game &mdash; it's a full Boston Web3 experience</p>
+        <p class="experience-note">We're putting together a bigger experience: meet fellow Web3 diehards IRL, explore an art gallery, do a historical walk through Boston, and more. Details will come as we figure out who's interested &mdash; we want to make this as affordable as possible for our community.</p>
+        <p class="date">September 2026 &mdash; Fenway Park, Boston</p>
+        <button class="scroll-btn" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})">
+          See the Games &#9660;
+        </button>
+      </div>
+    </div>
   </section>
 
   <!-- Stitch divider -->
@@ -1030,6 +1205,76 @@
     </table>
   </section>
 
+  <!-- Interest CTA with Fenway Image & Form -->
+  <section class="interest-cta" id="interest">
+    <div class="interest-cta-inner">
+      <h2>Interested? Let Us Know</h2>
+      <p>We're gauging interest to lock in the best deal for our Web3 community. Drop your info below and we'll keep you in the loop.</p>
+
+      <a href="#interest-form" class="fenway-cta-wrapper" onclick="event.preventDefault(); document.getElementById('interest-form').scrollIntoView({behavior:'smooth'})">
+        <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b8d937e2a5ef57890eeff3_Pavilion%20Hospitality%20Seat%20View.jpg" alt="Fenway Park Pavilion Hospitality View" class="fenway-cta-img" />
+        <span class="fenway-cta-label">Click here to fill out the interest form below</span>
+      </a>
+
+      <div class="interest-form" id="interest-form">
+        <h3>Sign Up for Updates</h3>
+        <form id="boston-web3-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-name">Your Name</label>
+              <input type="text" id="form-name" name="name" placeholder="First & Last Name" required />
+            </div>
+            <div class="form-group">
+              <label for="form-x">Your X (Twitter) Handle</label>
+              <input type="text" id="form-x" name="x_handle" placeholder="@yourhandle" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-game">Which Series?</label>
+              <select id="form-game" name="game">
+                <option value="">Select a series...</option>
+                <option value="royals">Option A: Red Sox vs. Royals (Sep 11-13)</option>
+                <option value="cubs">Option B: Red Sox vs. Cubs (Sep 25-27)</option>
+                <option value="either">Either series works for me</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="form-date">Preferred Game Date</label>
+              <select id="form-date" name="date">
+                <option value="">Select a date...</option>
+                <optgroup label="Royals Series (Option A)">
+                  <option value="sep11">Fri, Sep 11 — 7:10 PM</option>
+                  <option value="sep12">Sat, Sep 12 — 4:10 PM (Bruins Day)</option>
+                  <option value="sep13">Sun, Sep 13 — 1:35 PM</option>
+                </optgroup>
+                <optgroup label="Cubs Series (Option B)">
+                  <option value="sep25">Fri, Sep 25 — 7:10 PM (Pok&eacute;mon GO Night)</option>
+                  <option value="sep26">Sat, Sep 26 — 7:15 PM</option>
+                  <option value="sep27">Sun, Sep 27 — 3:05 PM</option>
+                </optgroup>
+                <option value="any">Any date works</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="form-package">Preferred Package</label>
+            <select id="form-package" name="package">
+              <option value="">Select a package...</option>
+              <option value="carls">Carl's Corner Pre-Game Reception ($285/person)</option>
+              <option value="cantina">Hornitos Cantina In-Game Reception (~$195/person)</option>
+              <option value="unsure">Not sure yet — tell me more</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Count Me In</button>
+        </form>
+        <div class="form-success" id="form-success">
+          Thanks for your interest! We'll be in touch as plans come together.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Event Planners -->
   <section class="planners">
     <h2>Your Event Planners</h2>
@@ -1060,6 +1305,14 @@
   </footer>
 
   <script is:inline>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      var form = document.getElementById('boston-web3-form');
+      var success = document.getElementById('form-success');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
       // Carl's Corner guest slider
       var slider = document.getElementById('carls-slider');
