@@ -1295,7 +1295,8 @@
 
       <div class="interest-form" id="interest-form">
         <h3>Sign Up for Updates</h3>
-        <form id="boston-web3-form" onsubmit="handleFormSubmit(event)">
+        <iframe name="form-iframe" id="form-iframe" style="display:none;" aria-hidden="true"></iframe>
+        <form id="boston-web3-form" method="POST" action="https://script.google.com/macros/s/AKfycbyNHsrMQ_qEmqTpj4EwX851PZ5b_6F2gwn4jdEn64DwEuRUDQwmDxCWx54_PZnw_rQBfw/exec" target="form-iframe" onsubmit="handleFormSubmit(event)">
           <div class="form-row">
             <div class="form-group">
               <label for="form-name">Your Name</label>
@@ -1398,30 +1399,28 @@
     }
 
     function handleFormSubmit(e) {
-      e.preventDefault();
-
       // Rate-limit: block rapid re-submissions
-      if (_formCooldown) return;
+      if (_formCooldown) {
+        e.preventDefault();
+        return;
+      }
 
       var form = document.getElementById('boston-web3-form');
       var btn = document.getElementById('form-submit-btn');
       var success = document.getElementById('form-success');
       var errorEl = document.getElementById('form-error');
 
-      // Honeypot check — if filled, silently "succeed" (bot caught)
+      // Honeypot check — if filled, block submit silently
       if (form.elements['website'] && form.elements['website'].value) {
+        e.preventDefault();
         form.style.display = 'none';
         success.style.display = 'block';
         return;
       }
 
-      // Collect & sanitize into URL-encoded form data (works with no-cors)
-      var params = new URLSearchParams();
-      params.append('name',     sanitize(form.elements['name'].value));
-      params.append('x_handle', sanitize(form.elements['x_handle'].value));
-      params.append('game',     sanitize(form.elements['game'].value));
-      params.append('date',     sanitize(form.elements['date'].value));
-      params.append('package',  sanitize(form.elements['package'].value));
+      // Sanitize inputs in-place before native form submit
+      form.elements['name'].value = sanitize(form.elements['name'].value);
+      form.elements['x_handle'].value = sanitize(form.elements['x_handle'].value);
 
       // Disable button + cooldown
       btn.disabled = true;
@@ -1429,24 +1428,14 @@
       _formCooldown = true;
       errorEl.style.display = 'none';
 
-      fetch('https://script.google.com/macros/s/AKfycbyNHsrMQ_qEmqTpj4EwX851PZ5b_6F2gwn4jdEn64DwEuRUDQwmDxCWx54_PZnw_rQBfw/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString()
-      })
-      .then(function () {
+      // Let the native form submit to the hidden iframe (action + target set in HTML)
+      // Show success after a short delay (iframe won't fire readable load cross-origin)
+      setTimeout(function () {
         form.style.display = 'none';
         success.style.display = 'block';
-      })
-      .catch(function () {
-        errorEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Count Me In';
-      })
-      .finally(function () {
-        setTimeout(function () { _formCooldown = false; }, 5000);
-      });
+      }, 1500);
+
+      setTimeout(function () { _formCooldown = false; }, 5000);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
