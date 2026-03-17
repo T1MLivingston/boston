@@ -41,7 +41,6 @@
 
     /* Hero */
     .hero {
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -49,7 +48,7 @@
         linear-gradient(135deg, rgba(12,35,64,0.88) 0%, rgba(26,58,92,0.82) 40%, rgba(189,48,57,0.75) 100%),
         url('https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b8d937e2a5ef57890eeff3_Pavilion%20Hospitality%20Seat%20View.jpg') center/cover no-repeat;
       color: #fff;
-      padding: 2rem;
+      padding: 3rem 2rem;
       position: relative;
     }
 
@@ -88,38 +87,47 @@
       font-weight: 600;
     }
 
-    .hero .experience-note {
-      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-      opacity: 0.85;
-      margin-bottom: 0.75rem;
-      line-height: 1.5;
-    }
-
     .hero .date {
       font-family: 'Oswald', sans-serif;
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       color: var(--gold);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .hero .scroll-btn {
-      display: inline-block;
-      padding: 0.7rem 2rem;
-      background: transparent;
-      border: 2px solid rgba(255,255,255,0.5);
+    .hero-series-inline {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-series-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
       color: #fff;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
 
-    .hero .scroll-btn:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: #fff;
+    .hero-series-chip:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .hero-series-chip img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .hero-series-chip .chip-dates {
+      font-family: 'Oswald', sans-serif;
+      color: var(--gold);
+      font-size: 0.8rem;
+      display: block;
     }
 
     /* Interest CTA Section */
@@ -972,6 +980,11 @@
         width: clamp(180px, 50vw, 280px);
       }
 
+      .hero-series-inline {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .cards {
         grid-template-columns: 1fr;
       }
@@ -1019,12 +1032,24 @@
       <img src="https://cdn.prod.website-files.com/64aa957da446d8dc44869f81/69b78fe2b73770a04d4576e6_27f15ca4-9bfa-4224-8dea-c2884004a2ca.png" alt="Boston Web3 Logo" class="hero-logo" />
       <div class="hero-text">
         <h1>Boston Web3 Meetup<br>at Fenway Park</h1>
-        <p class="subtitle">More than a game &mdash; it's a full Boston Web3 experience</p>
-        <p class="experience-note">We're putting together a bigger experience: meet fellow Web3 diehards IRL, explore an art gallery, do a historical walk through Boston, and more. Details will come as we figure out who's interested &mdash; we want to make this as affordable as possible for our community.</p>
-        <p class="date">September 2026 &mdash; Fenway Park, Boston</p>
-        <button class="scroll-btn" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})">
-          See the Games &#9660;
-        </button>
+        <p class="subtitle">Gauging interest for the upcoming fall game</p>
+        <p class="date">September 2026 / Fenway Park, Boston</p>
+        <div class="hero-series-inline">
+          <div class="hero-series-chip">
+            <img src="https://a.espncdn.com/i/teamlogos/mlb/500/kc.png" alt="Royals" />
+            <div>
+              <strong>Red Sox vs. Royals</strong>
+              <span class="chip-dates">Sep 11-13</span>
+            </div>
+          </div>
+          <div class="hero-series-chip">
+            <img src="https://a.espncdn.com/i/teamlogos/mlb/500/chc.png" alt="Cubs" />
+            <div>
+              <strong>Red Sox vs. Cubs</strong>
+              <span class="chip-dates">Sep 25-27</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1036,72 +1061,6 @@
       <path d="M0,20 Q150,5 300,18 Q450,32 600,18 Q750,5 900,18 Q1050,32 1200,18" fill="none" stroke="#BD3039" stroke-width="2.5" stroke-dasharray="8,6"/>
     </svg>
   </div>
-
-  <!-- Game Series -->
-  <section class="series" id="series">
-    <h2>The Games</h2>
-    <p>Two potential series we're targeting — vote for your favorite!</p>
-
-    <div class="series-cards">
-
-      <!-- Series 1: Royals -->
-      <div class="series-card">
-        <div class="series-card-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/kc.png" alt="Kansas City Royals Logo" />
-          <h3>Red Sox vs. Royals</h3>
-        </div>
-        <div class="series-card-body">
-          <div class="series-dates">September 11 &ndash; 13, 2026</div>
-          <div class="series-opponent">3-game series at Fenway Park</div>
-          <div class="game-schedule">
-            <div class="game-row">
-              <span class="game-day">Fri, Sep 11</span>
-              <span class="game-time">7:10 PM ET</span>
-            </div>
-            <div class="game-row">
-              <span class="game-day">Sat, Sep 12</span>
-              <span class="game-time">4:10 PM ET</span>
-              <span class="game-promo">Bruins Day</span>
-            </div>
-            <div class="game-row">
-              <span class="game-day">Sun, Sep 13</span>
-              <span class="game-time">1:35 PM ET</span>
-            </div>
-          </div>
-          <div class="series-badge">Option A</div>
-        </div>
-      </div>
-
-      <!-- Series 2: Cubs -->
-      <div class="series-card">
-        <div class="series-card-header">
-          <img src="https://a.espncdn.com/i/teamlogos/mlb/500/chc.png" alt="Chicago Cubs Logo" />
-          <h3>Red Sox vs. Cubs</h3>
-        </div>
-        <div class="series-card-body">
-          <div class="series-dates">September 25 &ndash; 27, 2026</div>
-          <div class="series-opponent">3-game series at Fenway Park</div>
-          <div class="game-schedule">
-            <div class="game-row">
-              <span class="game-day">Fri, Sep 25</span>
-              <span class="game-time">7:10 PM ET</span>
-              <span class="game-promo">Pok&eacute;mon GO Night</span>
-            </div>
-            <div class="game-row">
-              <span class="game-day">Sat, Sep 26</span>
-              <span class="game-time">7:15 PM ET</span>
-            </div>
-            <div class="game-row">
-              <span class="game-day">Sun, Sep 27</span>
-              <span class="game-time">3:05 PM ET</span>
-            </div>
-          </div>
-          <div class="series-badge">Option B</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- Packages -->
   <section class="packages" id="packages">
@@ -1138,7 +1097,7 @@
           <ul class="features">
             <li>2-hour pre-game reception in Carl's Corner space</li>
             <li>All-you-can-eat New England buffet for the full 2 hours</li>
-            <li>Hosted bar &mdash; beer, wine, soda, water, seltzers (2 hrs)</li>
+            <li>Hosted bar: beer, wine, soda, water, seltzers (2 hrs)</li>
             <li>Dedicated server for your group</li>
             <li>Seats together in Pavilion Reserved 18 or 20, right next to your reception space</li>
           </ul>
@@ -1149,7 +1108,7 @@
           <div class="addons-content" id="addons-carls">
             <div class="inner">
               <ul>
-                <li>Up to 25 total guests — use the slider above to adjust</li>
+                <li>Up to 25 total guests. Use the slider above to adjust</li>
                 <li>Bar can be extended for an additional 2 hours at $40/person</li>
               </ul>
             </div>
@@ -1220,7 +1179,7 @@
             <li>Full access to the Cantina throughout the entire game</li>
             <li>TVs, drink rails, and tables for your group</li>
             <li>2-hour Ballpark favorites buffet starting at first pitch</li>
-            <li>2-hour hosted bar &mdash; beer, wine, soda, water, seltzers</li>
+            <li>2-hour hosted bar: beer, wine, soda, water, seltzers</li>
           </ul>
 
           <button class="toggle-btn" data-target="addons-cantina">Add-ons &amp; Details</button>
@@ -1344,14 +1303,14 @@
               <select id="form-date" name="date">
                 <option value="">Select a date...</option>
                 <optgroup label="Royals Series (Option A)">
-                  <option value="sep11">Fri, Sep 11 — 7:10 PM</option>
-                  <option value="sep12">Sat, Sep 12 — 4:10 PM (Bruins Day)</option>
-                  <option value="sep13">Sun, Sep 13 — 1:35 PM</option>
+                  <option value="sep11">Fri, Sep 11 / 7:10 PM</option>
+                  <option value="sep12">Sat, Sep 12 / 4:10 PM (Bruins Day)</option>
+                  <option value="sep13">Sun, Sep 13 / 1:35 PM</option>
                 </optgroup>
                 <optgroup label="Cubs Series (Option B)">
-                  <option value="sep25">Fri, Sep 25 — 7:10 PM (Pok&eacute;mon GO Night)</option>
-                  <option value="sep26">Sat, Sep 26 — 7:15 PM</option>
-                  <option value="sep27">Sun, Sep 27 — 3:05 PM</option>
+                  <option value="sep25">Fri, Sep 25 / 7:10 PM (Pok&eacute;mon GO Night)</option>
+                  <option value="sep26">Sat, Sep 26 / 7:15 PM</option>
+                  <option value="sep27">Sun, Sep 27 / 3:05 PM</option>
                 </optgroup>
                 <option value="any">Any date works</option>
               </select>
@@ -1363,7 +1322,7 @@
               <option value="">Select a package...</option>
               <option value="carls">Carl's Corner Pre-Game Reception ($285/person)</option>
               <option value="cantina">Hornitos Cantina In-Game Reception (~$195/person)</option>
-              <option value="unsure">Not sure yet — tell me more</option>
+              <option value="unsure">Not sure yet, tell me more</option>
             </select>
           </div>
           <button type="submit" class="form-submit">Count Me In</button>
