@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nibbles Cloak Cabinet</title>
+  <style>
+    :root {
+      --bg: #f4efe2;
+      --bg-2: #efe7d4;
+      --ink: #1f1b16;
+      --muted: #655947;
+      --line: #bfae87;
+      --line-2: #8d7c57;
+      --tab: #d8c59d;
+      --tab-active: #f7f1e4;
+      --panel: #f7f1e4;
+      --shadow: rgba(47, 35, 17, 0.14);
+      --accent: #3a5a2c;
+      --accent-2: #547f43;
+      --button: #2b2a27;
+      --button-text: #fff8eb;
+      --card: #fffaf0;
+      --gold: #d6ba78;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.65), rgba(255,255,255,0) 30%),
+        linear-gradient(180deg, var(--bg) 0%, #eadfc5 100%);
+      color: var(--ink);
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 14px 18px 28px;
+    }
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .topline-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .mini-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.65) inset;
+      white-space: nowrap;
+    }
+    .mini-pill strong {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nibbles-link {
+      padding: 6px 10px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      background: #fff8ea;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .nibbles-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px var(--shadow);
+    }
+    .hero {
+      position: relative;
+      border: 2px solid var(--line-2);
+      background: linear-gradient(180deg, #fbf5e8, #efe4cb);
+      border-radius: 22px;
+      box-shadow: 0 10px 26px var(--shadow);
+      padding: 12px 14px 14px;
+      margin-bottom: 12px;
+    }
+    .hero-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .blackboard-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #fff;
+      border: 2px solid #171717;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      flex: 0 0 auto;
+    }
+    .brand-text {
+      min-width: 0;
+    }
+    .brand-text .kicker {
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .brand-text h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .brand-text .sub {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+    .action-btn {
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: var(--button);
+      color: var(--button-text);
+      font-weight: 700;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .action-btn:hover {
+      transform: translateY(-1px);
+    }
+    .help-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      background: #fff8ea;
+      border: 2px solid var(--line-2);
+    }
+    .tabs-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 4px 0 0;
+      padding-top: 4px;
+    }
+    .folder-tab {
+      position: relative;
+      padding: 10px 14px 11px;
+      border: 2px solid var(--line-2);
+      border-bottom: none;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(180deg, var(--tab), #ccb37e);
+      color: #2a2318;
+      font-weight: 800;
+      box-shadow: 0 4px 0 rgba(255,255,255,0.35) inset;
+      transform: translateY(2px);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .folder-tab:hover {
+      filter: brightness(1.03);
+      transform: translateY(0);
+    }
+    .folder-tab.active {
+      background: linear-gradient(180deg, var(--tab-active), var(--panel));
+      z-index: 2;
+      transform: translateY(0);
+    }
+    .folder-tab .count {
+      margin-left: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .panel {
+      border: 2px solid var(--line-2);
+      border-radius: 0 18px 18px 18px;
+      background: linear-gradient(180deg, var(--panel), #f4ebd7);
+      box-shadow: 0 12px 24px var(--shadow);
+      padding: 14px;
+    }
+    .featured {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+    .featured-art {
+      border: 2px solid var(--line);
+      background: linear-gradient(180deg, #fffaf0, #ece0c4);
+      border-radius: 18px;
+      min-height: 290px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08) inset;
+    }
+    .featured-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 0;
+    }
+    .featured-copy-top {
+      min-width: 0;
+    }
+    .label {
+      display: inline-flex;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #e6d7af;
+      border: 1px solid #b79f67;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .featured-title {
+      font-size: 34px;
+      line-height: 1;
+      margin: 0 0 8px;
+      word-break: break-word;
+    }
+    .featured-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.6);
+      font-size: 12px;
+    }
+    .featured-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 72ch;
+    }
+    .featured-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ghost-btn {
+      padding: 10px 13px;
+      border-radius: 12px;
+      border: 2px solid var(--line-2);
+      background: #fff8ea;
+      font-weight: 800;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--card), #efe3c7);
+      box-shadow: 0 8px 18px var(--shadow);
+      padding: 10px;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      text-align: left;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px rgba(47, 35, 17, 0.18);
+    }
+    .thumb {
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #ccb98d;
+      background: linear-gradient(180deg, #fff9ef, #efe2c2);
+      display: grid;
+      place-items: center;
+      margin-bottom: 9px;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      line-height: 1.1;
+    }
+    .card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .tiny-type {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #4b412f;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 14, 10, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 40;
+    }
+    .overlay.show {
+      display: flex;
+    }
+    .modal {
+      width: min(680px, 100%);
+      border-radius: 20px;
+      border: 2px solid var(--line-2);
+      background: linear-gradient(180deg, #fffaf1, #eee1c1);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+      overflow: hidden;
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(141,124,87,0.45);
+      background: rgba(255,255,255,0.45);
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0;
+    }
+    .close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 2px solid var(--line-2);
+      background: #fff8ea;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .modal-body {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 16px;
+      padding: 16px;
+    }
+    .modal-art {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid var(--line);
+      background: linear-gradient(180deg, #fff9ef, #eadcba);
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+    }
+    .modal-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .modal-copy {
+      min-width: 0;
+    }
+    .modal-copy p {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .footnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .empty {
+      padding: 26px;
+      text-align: center;
+      color: var(--muted);
+      border: 2px dashed var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.45);
+    }
+    @media (max-width: 930px) {
+      .featured {
+        grid-template-columns: 1fr;
+      }
+      .featured-art {
+        min-height: 240px;
+      }
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+      .modal-art {
+        min-height: 220px;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        padding: 10px 10px 20px;
+      }
+      .hero {
+        padding: 10px;
+      }
+      .hero-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .brand-text h1 {
+        font-size: 24px;
+      }
+      .featured-title {
+        font-size: 28px;
+      }
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .tabs-wrap {
+        gap: 4px;
+      }
+      .folder-tab {
+        padding: 9px 11px 10px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topline">
+      <div class="topline-left">
+        <span class="mini-pill"><strong>Total</strong> <span id="stat-total">264</span></span>
+        <span class="mini-pill"><strong>Showing</strong> <span id="stat-showing">264</span></span>
+        <span class="mini-pill"><strong>Tab</strong> <span id="stat-tab">All</span></span>
+        <span class="mini-pill"><strong>Featured</strong> <span id="stat-featured">—</span></span>
+      </div>
+      <a class="nibbles-link" href="https://opensea.io/collection/the-nibbles" target="_blank" rel="noopener noreferrer">Nibbles ↗</a>
+    </div>
+    <section class="hero">
+      <div class="hero-header">
+        <div class="brand">
+          <div class="blackboard-mark">BB</div>
+          <div class="brand-text">
+            <div class="kicker">Blackboard Cafe Presents</div>
+            <h1>Nibbles Cloak Cabinet</h1>
+            <div class="sub">Folder-tab browsing, featured cloaks, and quick randomizers.</div>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="action-btn" id="randomAllBtn">Randomize All</button>
+          <button class="action-btn" id="randomTypeBtn">Randomize This Tab</button>
+          <button class="help-btn" id="helpBtn" aria-label="Help">?</button>
+        </div>
+      </div>
+      <div class="tabs-wrap" id="tabs"></div>
+      <div class="panel">
+        <section class="featured" id="featuredSection">
+          <div class="featured-art" id="featuredArt"></div>
+          <div class="featured-copy">
+            <div class="featured-copy-top">
+              <div class="label" id="featuredLabel">Featured Cloak</div>
+              <h2 class="featured-title" id="featuredTitle">—</h2>
+              <div class="featured-meta">
+                <span class="meta-chip">Type: <strong id="featuredType" style="margin-left:4px;">—</strong></span>
+                <span class="meta-chip">Token: <strong id="featuredToken" style="margin-left:4px;">—</strong></span>
+              </div>
+              <div class="featured-desc" id="featuredDesc">
+                Pick a tab to browse that cloak group. Click any card to open a small popup with the token details and the external item link.
+              </div>
+            </div>
+            <div class="featured-actions">
+              <button class="ghost-btn" id="viewFeaturedBtn">Open Featured Popup</button>
+              <button class="ghost-btn" id="jumpTopBtn">Back to Tabs</button>
+            </div>
+          </div>
+        </section>
+        <section class="grid" id="grid"></section>
+        <div class="empty" id="emptyState" style="display:none;">No cloaks found for this tab.</div>
+      </div>
+    </section>
+  </div>
+  <div class="overlay" id="itemOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 class="modal-title" id="modalTitle">Cloak Details</h3>
+        <button class="close-btn" id="closeItemOverlay" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-art" id="modalArt"></div>
+        <div class="modal-copy">
+          <div class="label" id="modalTypeLabel">Cloak</div>
+          <h4 style="font-size:28px; margin:0 0 10px;" id="modalName">—</h4>
+          <div class="featured-meta" style="margin-bottom:12px;">
+            <span class="meta-chip">Type: <strong id="modalType" style="margin-left:4px;">—</strong></span>
+            <span class="meta-chip">Token: <strong id="modalToken" style="margin-left:4px;">—</strong></span>
+          </div>
+          <p id="modalText">
+            Popup view for a selected cloak.
+          </p>
+          <div class="featured-actions">
+            <a class="action-btn" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">View on OpenSea ↗</a>
+          </div>
+          <div class="footnote" id="modalFootnote"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay" id="helpOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="modal-head">
+        <h3 class="modal-title" id="helpTitle">How it works</h3>
+        <button class="close-btn" id="closeHelpOverlay" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" style="grid-template-columns:1fr;">
+        <div class="modal-copy">
+          <div class="label">Quick Guide</div>
+          <p><strong>Browse tabs:</strong> Each folder tab filters the cabinet to one cloak type.</p>
+          <p><strong>Featured cloak:</strong> Each tab opens with its featured cloak selected.</p>
+          <p><strong>Randomizers:</strong> Use <em>Randomize All</em> or <em>Randomize This Tab</em> to spin through cloaks and land on one result.</p>
+          <p><strong>Popup details:</strong> Click any cloak card to open a small popup with the token info and the external item link.</p>
+          <p><strong>Add your character:</strong> Send a new batch of token rows in the same format and the cabinet can be updated with another tab or refreshed data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/nibbles-data.js"></script>
+</body>
+</html>
