@@ -921,56 +921,6 @@
       font-size: 1.05rem;
     }
 
-    .sponsor-tiers {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .sponsor-tier {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1.5rem 1rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      border: 2px solid transparent;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: default;
-    }
-
-    .sponsor-tier:hover {
-      transform: translateY(-3px);
-      border-color: var(--gold);
-    }
-
-    .sponsor-tier .tier-tickets {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1;
-    }
-
-    .sponsor-tier .tier-label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 0.25rem;
-    }
-
-    .sponsor-tier .tier-desc {
-      font-size: 0.9rem;
-      color: var(--text);
-      margin-top: 0.75rem;
-    }
-
-    .sponsor-tier.full-sponsor {
-      border-color: var(--gold);
-      background: linear-gradient(135deg, #fff 80%, rgba(200,169,81,0.12));
-    }
-
     .sponsor-form-wrap {
       background: var(--card-bg);
       border-radius: 12px;
@@ -1093,9 +1043,6 @@
     }
 
     @media (max-width: 600px) {
-      .sponsor-tiers {
-        grid-template-columns: 1fr 1fr;
-      }
       .sponsor-form-wrap .form-row,
       .sponsor-package-options {
         grid-template-columns: 1fr;
@@ -1544,30 +1491,7 @@
   <!-- Sponsorship Packages -->
   <section class="sponsorship" id="sponsorship">
     <h2 class="section-title">Sponsorship Packages</h2>
-    <p>Reserve tickets for your team and get your brand in front of the Boston Web3 community.</p>
-
-    <div class="sponsor-tiers">
-      <div class="sponsor-tier">
-        <span class="tier-tickets">5</span>
-        <span class="tier-label">Tickets</span>
-        <p class="tier-desc">Great for small teams looking to connect</p>
-      </div>
-      <div class="sponsor-tier">
-        <span class="tier-tickets">10</span>
-        <span class="tier-label">Tickets</span>
-        <p class="tier-desc">Perfect for bringing the whole crew</p>
-      </div>
-      <div class="sponsor-tier">
-        <span class="tier-tickets">20</span>
-        <span class="tier-label">Tickets</span>
-        <p class="tier-desc">Make a big impression with a large group</p>
-      </div>
-      <div class="sponsor-tier full-sponsor">
-        <span class="tier-tickets">Full</span>
-        <span class="tier-label">Sponsorship</span>
-        <p class="tier-desc">Premier branding &amp; maximum exposure</p>
-      </div>
-    </div>
+    <p>Reserve tickets for your team at ~$200/person (Hornitos Cantina) and get your brand in front of the Boston Web3 community.</p>
 
     <div class="sponsor-form-wrap">
       <h3>Interested in Sponsoring?</h3>
@@ -1610,9 +1534,9 @@
         <div class="form-group">
           <label>Sponsorship Level</label>
           <div class="sponsor-package-options">
-            <label><input type="radio" name="sponsor_package" value="5_tickets" required /> 5 Tickets</label>
-            <label><input type="radio" name="sponsor_package" value="10_tickets" /> 10 Tickets</label>
-            <label><input type="radio" name="sponsor_package" value="20_tickets" /> 20 Tickets</label>
+            <label><input type="radio" name="sponsor_package" value="5_tickets" required /> 5 Tickets — ~$1,000</label>
+            <label><input type="radio" name="sponsor_package" value="10_tickets" /> 10 Tickets — ~$2,000</label>
+            <label><input type="radio" name="sponsor_package" value="20_tickets" /> 20 Tickets — ~$4,000</label>
             <label><input type="radio" name="sponsor_package" value="full_sponsorship" /> Full Sponsorship</label>
           </div>
         </div>
