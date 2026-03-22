@@ -903,6 +903,205 @@
       border-left-color: var(--red);
     }
 
+    /* Sponsorship Section */
+    .sponsorship {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .sponsorship h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .sponsorship > p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .sponsor-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .sponsor-tier {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .sponsor-tier:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .sponsor-tier .tier-tickets {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .sponsor-tier .tier-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    .sponsor-tier .tier-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 0.75rem;
+    }
+
+    .sponsor-tier.full-sponsor {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, #fff 80%, rgba(200,169,81,0.12));
+    }
+
+    .sponsor-form-wrap {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      text-align: left;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .sponsor-form-wrap h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .sponsor-form-wrap .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .sponsor-form-wrap .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .sponsor-form-wrap label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+      color: var(--navy);
+    }
+
+    .sponsor-form-wrap input,
+    .sponsor-form-wrap select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: rgba(245,245,245,0.5);
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+
+    .sponsor-form-wrap input:focus,
+    .sponsor-form-wrap select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .sponsor-package-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .sponsor-package-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .sponsor-package-options label:hover {
+      background: rgba(200,169,81,0.08);
+      border-color: var(--gold);
+    }
+
+    .sponsor-package-options input[type="radio"] {
+      width: auto;
+      accent-color: var(--navy);
+    }
+
+    .sponsor-submit {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .sponsor-submit:hover {
+      background: #b89a3e;
+      transform: translateY(-1px);
+    }
+
+    .sponsor-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .sponsor-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .sponsor-tiers {
+        grid-template-columns: 1fr 1fr;
+      }
+      .sponsor-form-wrap .form-row,
+      .sponsor-package-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Event Planners */
     .planners {
       max-width: 900px;
@@ -1342,6 +1541,94 @@
     </table>
   </section>
 
+  <!-- Sponsorship Packages -->
+  <section class="sponsorship" id="sponsorship">
+    <h2 class="section-title">Sponsorship Packages</h2>
+    <p>Reserve tickets for your team and get your brand in front of the Boston Web3 community.</p>
+
+    <div class="sponsor-tiers">
+      <div class="sponsor-tier">
+        <span class="tier-tickets">5</span>
+        <span class="tier-label">Tickets</span>
+        <p class="tier-desc">Great for small teams looking to connect</p>
+      </div>
+      <div class="sponsor-tier">
+        <span class="tier-tickets">10</span>
+        <span class="tier-label">Tickets</span>
+        <p class="tier-desc">Perfect for bringing the whole crew</p>
+      </div>
+      <div class="sponsor-tier">
+        <span class="tier-tickets">20</span>
+        <span class="tier-label">Tickets</span>
+        <p class="tier-desc">Make a big impression with a large group</p>
+      </div>
+      <div class="sponsor-tier full-sponsor">
+        <span class="tier-tickets">Full</span>
+        <span class="tier-label">Sponsorship</span>
+        <p class="tier-desc">Premier branding &amp; maximum exposure</p>
+      </div>
+    </div>
+
+    <div class="sponsor-form-wrap">
+      <h3>Interested in Sponsoring?</h3>
+      <iframe name="sponsor-form-iframe" id="sponsor-form-iframe" style="display:none;" aria-hidden="true"></iframe>
+      <form id="sponsor-form" method="POST" action="https://script.google.com/macros/s/AKfycbyNHsrMQ_qEmqTpj4EwX851PZ5b_6F2gwn4jdEn64DwEuRUDQwmDxCWx54_PZnw_rQBfw/exec" target="sponsor-form-iframe" onsubmit="handleSponsorSubmit(event)">
+        <input type="hidden" name="form_type" value="sponsor" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sponsor-name">Your Name</label>
+            <input type="text" id="sponsor-name" name="name" placeholder="First & Last Name" required />
+          </div>
+          <div class="form-group">
+            <label for="sponsor-contact">X Handle or Email</label>
+            <input type="text" id="sponsor-contact" name="x_handle" placeholder="@handle or email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sponsor-company">Company / Project</label>
+            <input type="text" id="sponsor-company" name="company" placeholder="Your company or project name" />
+          </div>
+          <div class="form-group">
+            <label for="sponsor-date">Preferred Game Date</label>
+            <select id="sponsor-date" name="date">
+              <option value="">Select a date...</option>
+              <optgroup label="Royals Series (Option A)">
+                <option value="sep11">Fri, Sep 11 / 7:10 PM</option>
+                <option value="sep12">Sat, Sep 12 / 4:10 PM (Bruins Day)</option>
+                <option value="sep13">Sun, Sep 13 / 1:35 PM</option>
+              </optgroup>
+              <optgroup label="Cubs Series (Option B)">
+                <option value="sep25">Fri, Sep 25 / 7:10 PM (Pok&eacute;mon GO Night)</option>
+                <option value="sep26">Sat, Sep 26 / 7:15 PM</option>
+                <option value="sep27">Sun, Sep 27 / 3:05 PM</option>
+              </optgroup>
+              <option value="any">Any date works</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sponsorship Level</label>
+          <div class="sponsor-package-options">
+            <label><input type="radio" name="sponsor_package" value="5_tickets" required /> 5 Tickets</label>
+            <label><input type="radio" name="sponsor_package" value="10_tickets" /> 10 Tickets</label>
+            <label><input type="radio" name="sponsor_package" value="20_tickets" /> 20 Tickets</label>
+            <label><input type="radio" name="sponsor_package" value="full_sponsorship" /> Full Sponsorship</label>
+          </div>
+        </div>
+        <!-- Honeypot -->
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label for="sponsor-website">Website</label>
+          <input type="text" id="sponsor-website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit" class="sponsor-submit" id="sponsor-submit-btn">Submit Sponsorship Interest</button>
+      </form>
+      <div class="sponsor-success" id="sponsor-success">
+        Thanks for your interest in sponsoring! We'll reach out soon to discuss the details.
+      </div>
+    </div>
+  </section>
+
   <!-- Interest CTA with Fenway Image & Form -->
   <section class="interest-cta" id="interest">
     <div class="interest-cta-inner">
@@ -1496,6 +1783,45 @@
       }, 1500);
 
       setTimeout(function () { _formCooldown = false; }, 5000);
+    }
+
+    var _sponsorCooldown = false;
+
+    function handleSponsorSubmit(e) {
+      if (_sponsorCooldown) {
+        e.preventDefault();
+        return;
+      }
+
+      var form = document.getElementById('sponsor-form');
+      var btn = document.getElementById('sponsor-submit-btn');
+      var success = document.getElementById('sponsor-success');
+
+      // Honeypot check
+      if (form.elements['website'] && form.elements['website'].value) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'block';
+        return;
+      }
+
+      // Sanitize inputs
+      form.elements['name'].value = sanitize(form.elements['name'].value);
+      form.elements['x_handle'].value = sanitize(form.elements['x_handle'].value);
+      if (form.elements['company']) {
+        form.elements['company'].value = sanitize(form.elements['company'].value);
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      _sponsorCooldown = true;
+
+      setTimeout(function () {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }, 1500);
+
+      setTimeout(function () { _sponsorCooldown = false; }, 5000);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
